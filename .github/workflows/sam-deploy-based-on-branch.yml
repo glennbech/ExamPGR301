@@ -2,7 +2,7 @@ on: push
 
 defaults:
   run:
-    working-directory: kjell
+    working-directory: ./kjell
 
 jobs:
   build:
