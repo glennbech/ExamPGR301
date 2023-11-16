@@ -15,10 +15,12 @@ import os
 s3_client = boto3.client('s3', region_name='eu-west-1')
 rekognition_client = boto3.client('rekognition', region_name='eu-west-1')
 
-# Oppgave 1A
-BUCKET_NAME = "kjellsimagebucker"
+
 
 def lambda_handler(event, context):
+    
+    # Oppgave 1A
+    BUCKET_NAME = event["bucket_name"]
 
     # List all objects in the S3 bucket
     paginator = s3_client.get_paginator('list_objects_v2')

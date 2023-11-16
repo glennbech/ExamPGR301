@@ -1,5 +1,6 @@
 {
   "body": "{\"message\": \"hello world\"}",
+  "bucket_name": "candidate2043",
   "resource": "/hello",
   "path": "/hello",
   "httpMethod": "GET",
