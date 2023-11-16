@@ -23,4 +23,5 @@ jobs:
     if: github.ref == 'refs/heads/main'
     steps:
       - uses: actions/checkout@v2
-      - run: sam deploy --no-confirm-changeset --no-fail-on-empty-changeset --stack-name candidate2043 --s3-bucket candidate2043 --capabilities CAPABILITY_IAM --region eu-west-1
+      - name: sam deplyment
+        - run: cd ExamPGR301/kjell && sam deploy --no-confirm-changeset --no-fail-on-empty-changeset --stack-name candidate2043 --s3-bucket candidate2043 --capabilities CAPABILITY_IAM --region eu-west-1
