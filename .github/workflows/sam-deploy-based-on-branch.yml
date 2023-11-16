@@ -2,7 +2,7 @@ on: push
 
 defaults:
   run:
-    working-directory: ./kjell
+    working-directory: ExamPGR301/kjell
 
 jobs:
   build:
