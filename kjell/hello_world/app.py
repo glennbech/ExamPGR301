@@ -20,7 +20,10 @@ rekognition_client = boto3.client('rekognition', region_name='eu-west-1')
 def lambda_handler(event, context):
     
     # Oppgave 1A
-    BUCKET_NAME = event["bucket_name"]
+    #BUCKET_NAME = event["bucket_name"]
+    
+    # use the env to get the bucket_name and if that doesnt work use the default value from events/event.json
+    BUCKET_NAME = os.getenv("BUCKET_NAME")
 
     # List all objects in the S3 bucket
     paginator = s3_client.get_paginator('list_objects_v2')
