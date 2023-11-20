@@ -4,7 +4,6 @@ on: push
 
 jobs:
   build-image:
-    name: build docker image
     runs-on: ubuntu-latest
     steps:
       - name: Check out the repo
@@ -20,7 +19,7 @@ jobs:
           docker build -t ppe .
           docker tag ppe 244530008913.dkr.ecr.eu-west-1.amazonaws.com/candidate2043ecr:$rev
     deploy-image:
-      name: deplot built docker image
+      name: deploy built docker image
       needs: build-image
       if: github.ref == 'refs/heads/main'
       steps:
