@@ -64,12 +64,12 @@ jobs:
 
       - name: Terraform Init
         id: init
-        run: terraform init
+        run: cd infra && terraform init
 
       - name: Terraform Plan
         id: plan
         if: github.event_name == 'pull_request'
-        run: terraform plan   -var="service_prefix=$PREFIX" -var="image=$IMAGE"  -no-color
+        run: cd infra && terraform plan   -var="service_prefix=$PREFIX" -var="image=$IMAGE"  -no-color
         continue-on-error: true
 
       - name: Terraform Plan Status
@@ -78,4 +78,4 @@ jobs:
 
       - name: Terraform Apply
         if: github.ref == 'refs/heads/main' && github.event_name == 'push'
-        run: terraform apply -var="service_prefix=$PREFIX" -var="image=$IMAGE"  -auto-approve
+        run: cd infra && terraform apply -var="service_prefix=$PREFIX" -var="image=$IMAGE"  -auto-approve
