@@ -41,3 +41,41 @@ jobs:
           docker tag ppe 244530008913.dkr.ecr.eu-west-1.amazonaws.com/candidate2043ecr:latest
           docker push 244530008913.dkr.ecr.eu-west-1.amazonaws.com/candidate2043ecr:$rev
           docker push 244530008913.dkr.ecr.eu-west-1.amazonaws.com/candidate2043ecr:latest
+          
+
+  terraform:
+    name: "Terraform"
+    needs: deploy_image
+    runs-on: ubuntu-latest
+    env:
+      AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+      AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      AWS_REGION: eu-west-1
+#     CAN ALSO APPLY MORE ENV VARIABLES FOR FLAG VARIABLES CREATED LIKE
+#     cpu, memory, access_role_arn_prefix, iam_role_name, iam_policy_name
+#     we dont have to add these since they already have default values, so --auto-approve takes care of that on deployment
+      IMAGE: 244530008913.dkr.ecr.eu-west-1.amazonaws.com/candidate2043ecr:latest
+      PREFIX: candidate2043ar
+ #    TF_LOG: trace
+    steps:
+      - uses: actions/checkout@v3
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v2
+
+      - name: Terraform Init
+        id: init
+        run: terraform init
+
+      - name: Terraform Plan
+        id: plan
+        if: github.event_name == 'pull_request'
+        run: terraform plan   -var="service_prefix=$PREFIX" -var="image=$IMAGE"  -no-color
+        continue-on-error: true
+
+      - name: Terraform Plan Status
+        if: steps.plan.outcome == 'failure'
+        run: exit 1
+
+      - name: Terraform Apply
+        if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+        run: terraform apply -var="service_prefix=$PREFIX" -var="image=$IMAGE"  -auto-approve
