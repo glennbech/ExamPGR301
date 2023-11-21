@@ -45,7 +45,7 @@ jobs:
 
   terraform:
     name: "Terraform"
-    needs: deploy_image
+    needs: deploy-image
     runs-on: ubuntu-latest
     env:
       AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
