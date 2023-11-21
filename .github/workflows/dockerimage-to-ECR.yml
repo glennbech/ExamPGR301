@@ -23,7 +23,6 @@ jobs:
   deploy-image:
     runs-on: ubuntu-latest
     name: deploy built docker image
-    needs: build-image
     if: github.ref == 'refs/heads/main'
     steps:
       - name: Check out the repo
