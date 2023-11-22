@@ -29,6 +29,20 @@
             <artifactId>aws-java-sdk</artifactId>
             <version>1.12.12</version>
         </dependency>
+        
+        <!-- Micrometer Registry Cloudwatch2 for java 11 -->
+        <dependency>
+			<groupId>io.micrometer</groupId>
+			<artifactId>micrometer-registry-cloudwatch2</artifactId>
+			<version>1.9.9</version>
+		</dependency>
+		
+		<!-- Micrometer Core for java 11 -->
+		<dependency>
+			<groupId>io.micrometer</groupId>
+			<artifactId>micrometer-core</artifactId>
+			<version>1.9.9</version>
+		</dependency>
 
         <!-- Spring Boot Starter Web -->
         <dependency>
