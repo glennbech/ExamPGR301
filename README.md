@@ -19,7 +19,7 @@ aws configure
 
 Sensor vil lage en fork av ditt repository. Forklar hva sensor må gjøre for å få GitHub Actions workflow til å kjøre i sin egen GitHub-konto?
 
-![fork](img/fork.png "fork image")
+![fork](img/fork.jpg "fork image")
 
 generer token fra github
 
@@ -28,12 +28,12 @@ generer token fra github
 lag secrets slik
 
 trykk på settings 
-![settings](img/settings.png "settings image")
+![settings](img/settings.jpg "settings image")
 
 trykk derreter på secrets
-![secrets](img/secrets.png "secrets image")
+![secrets](img/secrets.jpg "secrets image")
 å lag secrets for disse tre verdiene
-![createsecrets](img/createsecrets.png "secrets image")
+![createsecrets](img/createsecrets.jpg "secrets image")
 
 ```sh   
 AWS_ACCESS_KEY_ID
