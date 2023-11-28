@@ -38,10 +38,12 @@ og lag secrets for disse tre verdiene
 ![createsecrets](img/createsecrets.jpg "secrets image")
 
 ```sh   
-AWS_ACCESS_KEY_ID
-AWS_SECRET_ACCESS_KEY
-NOTIFICATION_MAIL
+AWS_ACCESS_KEY_ID="DIN_ACCESS_KEY_ID"
+AWS_SECRET_ACCESS_KEY="DIN_SECRET_ACCESS_KEY"
+NOTIFICATION_MAIL="DIN_MAIL_DU_VIL_HA_NOTIFIKASJON_TIL"
 ```
+Hvis du trenger hjelp til å lage aws nøkler så logger du inn på aws, trykker på profilen din øverst til høyre, deretter trykker du på security credentials, gå ned til access key, å lag en ny en
+
 ## Viktig
 Viktig at du legger til alle secretsene for at terraform kode og workflows skal fungere som de skal
 
