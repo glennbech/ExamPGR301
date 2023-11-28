@@ -1,5 +1,7 @@
-
 # EXAMPGR301
+![samdeployment](https://github.com/bilalStudy/ExamPGR301/actions/workflows/sam-deploy-based-on-branch.yml/badge.svg)
+![ECRAndDashboardDeployment](https://github.com/bilalStudy/ExamPGR301/actions/workflows/dockerimage-to-ECR.yml/badge.svg)
+
 
 ## Viktig Info
 Gjennom oppgaven fungerte ikke aws credentialsene mine men etter å ha sett kunnkjøring så brukte jeg:
