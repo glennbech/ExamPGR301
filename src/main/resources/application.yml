@@ -1,0 +1,10 @@
+management:
+  endpoints:
+    web:
+      exposure:
+        include: metrics
+  metrics:
+    export:
+      cloudwatch:
+        namespace: candidate2043dash
+        enabled: true

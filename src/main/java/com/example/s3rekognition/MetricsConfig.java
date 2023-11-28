@@ -1,4 +1,4 @@
-package com.example.s3rekognition.controller;
+package com.example.s3rekognition;
 
 import io.micrometer.cloudwatch2.CloudWatchConfig;
 import io.micrometer.cloudwatch2.CloudWatchMeterRegistry;
@@ -14,8 +14,11 @@ import java.util.Map;
 
 @Configuration
 public class MetricsConfig {
+    
+    
     @Bean
     public CloudWatchAsyncClient cloudWatchAsyncClient() {
+        
         return CloudWatchAsyncClient
                 .builder()
                 .region(Region.EU_WEST_1)
@@ -35,7 +38,7 @@ public class MetricsConfig {
     private CloudWatchConfig setupCloudWatchConfig() {
         return new CloudWatchConfig() {
             private Map<String, String> configuration = Map.of(
-                    "cloudwatch.namespace", "bilalahmed",
+                    "cloudwatch.namespace", "candidate2043dash",
                     "cloudwatch.step", Duration.ofSeconds(5).toString());
 
             @Override
@@ -43,6 +46,7 @@ public class MetricsConfig {
                 return configuration.get(key);
             }
         };
+        
     }
 
 }

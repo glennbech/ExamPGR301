@@ -2,21 +2,20 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-
-    <groupId>com.example</groupId>
-    <artifactId>s3rekognition</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
-    <packaging>jar</packaging>
-
-    <name>s3rekognition</name>
-    <description>Demo project for Spring Boot S3 Rekognition</description>
-
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
         <version>2.5.4</version>
         <relativePath/>
     </parent>
+    <groupId>com.example</groupId>
+    <artifactId>s3rekognition</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <packaging>jar</packaging>
+    <name>s3rekognition</name>
+    <description>Demo project for Spring Boot S3 Rekognition</description>
+
+
 
     <properties>
         <java.version>11</java.version>
@@ -30,25 +29,42 @@
             <version>1.12.12</version>
         </dependency>
         
-        <!-- Micrometer Registry Cloudwatch2 for java 11 -->
+        <!-- Micrometer Core for java 11 -->
         <dependency>
 			<groupId>io.micrometer</groupId>
 			<artifactId>micrometer-registry-cloudwatch2</artifactId>
-			<version>1.9.9</version>
+			<version>1.5.5</version>
 		</dependency>
 		
-		<!-- Micrometer Core for java 11 -->
+		<!-- adding starter actuator -->
 		<dependency>
-			<groupId>io.micrometer</groupId>
-			<artifactId>micrometer-core</artifactId>
-			<version>1.9.9</version>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-actuator</artifactId>
 		</dependency>
-
+		
+		<!-- adding starter aop so aspectj library is included for meters -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-aop</artifactId>
+		</dependency>
         <!-- Spring Boot Starter Web -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
+    
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter</artifactId>
+        </dependency>
+    
+
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<optional>true</optional>
+			<version>1.18.20</version>
+		</dependency>
 
         <!-- Spring Boot Starter Test -->
         <dependency>
@@ -56,6 +72,11 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
+        <dependency>
+			<groupId>io.micrometer</groupId>
+			<artifactId>micrometer-core</artifactId>
+			<version>1.5.5</version>
+		</dependency>
     </dependencies>
 
     <build>
