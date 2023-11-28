@@ -116,5 +116,5 @@ jobs:
 
       - name: Terraform Apply
         if: github.ref == 'refs/heads/main' && github.event_name == 'push'
-        run: cd dashinfra && terraform apply -var="student_name=$STUDENT_NAME" -var="alarm_email=$NOTIFICATION_MAIL" -auto-approve
+        run: cd dashinfra && terraform apply -var="dashboard_name=$STUDENT_NAME" -var="alarm_email=$NOTIFICATION_MAIL" -auto-approve
         
