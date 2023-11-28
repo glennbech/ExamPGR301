@@ -40,7 +40,8 @@ AWS_ACCESS_KEY_ID
 AWS_SECRET_ACCESS_KEY
 NOTIFICATION_MAIL
 ```
-
+## Viktig
+Viktig at du legger til alle secretsene for at terraform kode og workflows skal fungere som de skal
 
 ## Terraform
 Se på dokumentasjonen til aws_apprunner_service ressursen, og reduser CPU til 256, og Memory til 1024 (defaultverdiene er høyere), 
