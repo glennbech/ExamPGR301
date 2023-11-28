@@ -97,11 +97,13 @@ for å kunne bruke jq for finere formattering kan du laste dette ned
 sudo yum install jq
 ```
 
-get for scan-ppe
+GET for scan-ppe
 
 ```sh
 curl --location --request GET 'http://localhost:8080/scan-ppe?bucketName=candidate2043'   --header 'Content-Type: application/json'|jq
 ```
+
+GET for scan-ppe-hand-cover
 
 ```sh
 curl --location --request GET 'http://localhost:8080/scan-ppe-hand-cover?bucketName=candidate2043'   --header 'Content-Type: application/json'|jq
