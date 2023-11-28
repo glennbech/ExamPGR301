@@ -82,39 +82,39 @@ jobs:
         
     
     
-    terraformdash:
-      name: "Terraformdash"
-      needs: deploy-image
-      runs-on: ubuntu-latest
-      env:
-        AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-        AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-        NOTIFICATION_MAIL: ${{ secrets.NOTIFICATION_MAIL}}
-        AWS_REGION: eu-west-1
-        IMAGE: 244530008913.dkr.ecr.eu-west-1.amazonaws.com/candidate2043ecr:latest
-        PREFIX: candidate2043dash
-        STUDENT_NAME: candidate2043dash
+  terraformdash:
+    name: "Terraformdash"
+    needs: deploy-image
+    runs-on: ubuntu-latest
+    env:
+      AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+      AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      NOTIFICATION_MAIL: ${{ secrets.NOTIFICATION_MAIL}}
+      AWS_REGION: eu-west-1
+      IMAGE: 244530008913.dkr.ecr.eu-west-1.amazonaws.com/candidate2043ecr:latest
+      PREFIX: candidate2043dash
+      STUDENT_NAME: candidate2043dash
  #    TF_LOG: trace
-      steps:
-        - uses: actions/checkout@v3
-        - name: Setup Terraform
-          uses: hashicorp/setup-terraform@v2
+    steps:
+      - uses: actions/checkout@v3
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v2
 
-        - name: Terraform Init
-          id: init
-          run: cd dashinfra && terraform init
+      - name: Terraform Init
+        id: init
+        run: cd dashinfra && terraform init
 
-        - name: Terraform Plan
-          id: plan
-          if: github.event_name == 'pull_request'
-          run: cd dashinfra && terraform plan -var="dashboard_name=$STUDENT_NAME" -var="alarm_email=$NOTIFICATION_MAIL" -no-color
-          continue-on-error: true
+      - name: Terraform Plan
+        id: plan
+        if: github.event_name == 'pull_request'
+        run: cd dashinfra && terraform plan -var="dashboard_name=$STUDENT_NAME" -var="alarm_email=$NOTIFICATION_MAIL" -no-color
+        continue-on-error: true
 
-        - name: Terraform Plan Status
-          if: steps.plan.outcome == 'failure'
-          run: exit 1
+      - name: Terraform Plan Status
+        if: steps.plan.outcome == 'failure'
+        run: exit 1
 
-        - name: Terraform Apply
-          if: github.ref == 'refs/heads/main' && github.event_name == 'push'
-          run: cd dashinfra && terraform apply -var="student_name=$STUDENT_NAME" -var="alarm_email=$NOTIFICATION_MAIL" -auto-approve
+      - name: Terraform Apply
+        if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+        run: cd dashinfra && terraform apply -var="student_name=$STUDENT_NAME" -var="alarm_email=$NOTIFICATION_MAIL" -auto-approve
         
