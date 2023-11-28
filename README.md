@@ -32,7 +32,9 @@ trykk på settings
 
 trykk derreter på secrets
 ![secrets](img/secrets.jpg "secrets image")
-å lag secrets for disse tre verdiene
+
+og lag secrets for disse tre verdiene
+
 ![createsecrets](img/createsecrets.jpg "secrets image")
 
 ```sh   
