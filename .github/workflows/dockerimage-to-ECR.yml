@@ -92,8 +92,8 @@ jobs:
       NOTIFICATION_MAIL: ${{ secrets.NOTIFICATION_MAIL}}
       AWS_REGION: eu-west-1
       IMAGE: 244530008913.dkr.ecr.eu-west-1.amazonaws.com/candidate2043ecr:latest
-      PREFIX: candidate2043dash
-      STUDENT_NAME: candidate2043dash
+      PREFIX: candidate2043dashs
+      STUDENT_NAME: candidate2043dashs
  #    TF_LOG: trace
     steps:
       - uses: actions/checkout@v3
