@@ -63,11 +63,10 @@ data "aws_iam_policy_document" "policy" {
 }
 
 resource "aws_iam_policy" "policy" {
-  name        = var.iam_policy_name
+  name        = var.service_prefix
   description = "Policy for apprunner instance I think"
   policy      = data.aws_iam_policy_document.policy.json
 }
-
 
 resource "aws_iam_role_policy_attachment" "attachment" {
   role       = aws_iam_role.role_for_apprunner_service.name
