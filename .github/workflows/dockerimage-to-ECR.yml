@@ -1,7 +1,6 @@
 name: publish docker image to ecr
 
 on: push
-
 jobs:
   build-image:
     runs-on: ubuntu-latest
