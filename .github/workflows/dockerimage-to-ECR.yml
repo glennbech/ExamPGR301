@@ -55,7 +55,7 @@ jobs:
 #     cpu, memory, access_role_arn_prefix, iam_role_name, iam_policy_name
 #     we dont have to add these since they already have default values, so --auto-approve takes care of that on deployment
       IMAGE: 244530008913.dkr.ecr.eu-west-1.amazonaws.com/candidate2043ecr:latest
-      PREFIX: candidate2043ar
+      PREFIX: candidate2043ars
  #    TF_LOG: trace
     steps:
       - uses: actions/checkout@v3
