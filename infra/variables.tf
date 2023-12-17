@@ -1,6 +1,6 @@
 variable "service_prefix" {
   type = string
-  default ="candidate2043ar"
+  default ="candidate2043ar-s"
 }
 
 variable "access_role_arn_prefix" {
